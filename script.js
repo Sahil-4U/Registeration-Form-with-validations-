@@ -3,13 +3,13 @@ function validate(){
  let firstNameInput = document.getElementById('first-name').value;
  let lastNameInput = document.getElementById('last-name').value;
  let emailInput = document.getElementById('Email').value;
- let cityInput = document.getElementById('City').value;
- let stateInput = document.getElementById('State').value;
- let zipInput = document.getElementById('Zip').value;
+ let batchInput = document.getElementById('Batch').value;
+ let moduleInput = document.getElementById('Module').value;
+ let phoneInput = document.getElementById('Phone').value;
  let tncInput = document.getElementById('tnC').checked;
  
  let error = false;
- if(firstNameInput)
+ if(firstNameInput && firstNameInput.length >= 3)
  {
     document.getElementById('first-name-valid').style.display = "block";
     document.getElementById('first-name-invalid').style.display = "none";
@@ -21,7 +21,7 @@ function validate(){
     error = true;
  }
 
- if(lastNameInput)
+ if(lastNameInput && lastNameInput.length >= 3)
  {
    document.getElementById('last-name-valid').style.display = "block";
    document.getElementById('last-name-invalid').style.display = "none";
@@ -46,29 +46,19 @@ function validate(){
   error = true;
  }
 
- if(cityInput.length >= 3 && !parseInt(cityInput))
+ if(parseInt(phoneInput) && phoneInput.length === 10)
  {
-  document.getElementById('city-valid').style.display = "block";
-  document.getElementById('city-invalid').style.display = "none";
- }
- else 
- {
-  document.getElementById('city-invalid').style.display = "block";
-  document.getElementById('city-valid').style.display = "none";
-  error = true;
- }
- 
- if(parseInt(zipInput) && zipInput.length === 6)
- {
-  document.getElementById('zip-valid').style.display = "block";
-  document.getElementById('zip-invalid').style.display = "none";
+  document.getElementById('phone-valid').style.display = "block";
+  document.getElementById('phone-invalid').style.display = "none";
  }
  else
  {
-  document.getElementById('zip-invalid').style.display = "block";
-  document.getElementById('zip-valid').style.display = "none";
+  document.getElementById('phone-invalid').style.display = "block";
+  document.getElementById('phone-valid').style.display = "none";
   error = true;
  }
+
+
  if(tncInput)
  {
   document.getElementById('tnC-valid').style.display = "none";
@@ -79,15 +69,26 @@ function validate(){
   error = true;
  }
 
- if(stateInput !== 'None')
+ if(batchInput !== 'Select Batch No__')
  {
-  document.getElementById('state-valid').style.display = "block";
-  document.getElementById('state-invalid').style.display = "none";
+  document.getElementById('batch-valid').style.display = "block";
+  document.getElementById('batch-invalid').style.display = "none";
  }
  else
  {
-  document.getElementById('state-invalid').style.display = "block";
-  document.getElementById('state-valid').style.display = "none";
+  document.getElementById('batch-invalid').style.display = "block";
+  document.getElementById('batch-valid').style.display = "none";
+  error = true;
+ }
+ if(moduleInput !== 'Current Module No__')
+ {
+  document.getElementById('module-valid').style.display = "block";
+  document.getElementById('module-invalid').style.display = "none";
+ }
+ else
+ {
+  document.getElementById('module-invalid').style.display = "block";
+  document.getElementById('module-valid').style.display = "none";
   error = true;
  }
 
@@ -97,16 +98,16 @@ function validate(){
   document.getElementById('first-name').value = '';
   document.getElementById('last-name').value = '';
   document.getElementById('Email').value = '';
-  document.getElementById('City').value = '';
-  document.getElementById('State').value = 'None';
-  document.getElementById('Zip').value = '';
+  document.getElementById('Phone').value = '';
+  document.getElementById('Batch').value = 'Select Batch No__';
+  document.getElementById('Module').value = 'Current Module No__';
   document.getElementById('tnC').checked = false;
 
   document.getElementById('first-name-valid').style.display = "none";
   document.getElementById('last-name-valid').style.display = "none";
   document.getElementById('email-valid').style.display = "none";
-  document.getElementById('city-valid').style.display = "none";
-  document.getElementById('zip-valid').style.display = "none";
-  document.getElementById('state-valid').style.display = "none";
+  document.getElementById('phone-valid').style.display = "none";
+  document.getElementById('batch-valid').style.display = "none";
+  document.getElementById('module-valid').style.display="none";
  }
 }
